@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Template Demo</title>
+		<link type="text/css" rel="stylesheet" href="reset.css" />
+		
+		<script type="text/javascript" src="Utils.js"></script>
+		<script type="text/javascript" src="Template.js"></script>
+	</head>
+	<body>
+		<script type="text/template" id="template"><!--
+			<div data-id="#= Id #">
+				<label>#= Name #</label>
+				<p>#= Description #</p>
+			</div>
+		--></script>
+		<div id="result"></div>
+		<script type="text/javascript">
+			(function() {
+				var arr = [
+					  { Id: 1, Name: 'Damian',   Description: 'Lead Developer' }
+					, { Id: 2, Name: 'Brittney', Description: 'Business Analyst, Project Manager' }
+					, { Id: 3, Name: 'Matt',     Description: 'Web Developer' }
+				];
+				
+				var t = new Template('template');
+				var result = document.getElementById('result');
+				
+				var html = '';
+				for(var i = 0, len = arr.length; i < len; ++i) {
+					html += t.render(arr[i]);
+				}
+				
+				result.innerHTML = html;
+			})();
+		</script>
+	</body>
+</html>
